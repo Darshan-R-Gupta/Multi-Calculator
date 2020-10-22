@@ -17,12 +17,12 @@ public class Trigonometry {
 	
 	public void getValuesByRadian(BigDecimal radian) {
 		this.radian = reduceRadian(radian);
-		System.out.println("sin(" + degree + ") : " + new BigDecimal(Math.sin(this.radian.doubleValue())));
-		System.out.println("cos(" + degree + ") : " + new BigDecimal(Math.cos(this.radian.doubleValue())));
-		System.out.println("tan(" + degree + ") : " + new BigDecimal(tan(this.radian.doubleValue())));
-		System.out.println("cot(" + degree + ") : " + new BigDecimal(cot(this.radian.doubleValue())));
-		System.out.println("sec(" + degree + ") : " + new BigDecimal(sec(this.radian.doubleValue())));
-		System.out.println("cosec(" + degree + ") : " + new BigDecimal(cosec(this.radian.doubleValue())));
+		System.out.println("sin(" + radian + ") : " + new BigDecimal(Math.sin(this.radian.doubleValue())));
+		System.out.println("cos(" + radian + ") : " + new BigDecimal(Math.cos(this.radian.doubleValue())));
+		System.out.println("tan(" + radian + ") : " + new BigDecimal(tan(this.radian.doubleValue())));
+		System.out.println("cot(" + radian + ") : " + new BigDecimal(cot(this.radian.doubleValue())));
+		System.out.println("sec(" + radian + ") : " + new BigDecimal(sec(this.radian.doubleValue())));
+		System.out.println("cosec(" + radian + ") : " + new BigDecimal(cosec(this.radian.doubleValue())));
 	}
 	
 
