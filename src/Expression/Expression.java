@@ -1,7 +1,7 @@
+package Expression;
 import java.util.*;
 import java.lang.Math;
 import java.math.*;
-import java.text.DecimalFormat;
 class Operator{
     char op;
     char ass;
@@ -78,7 +78,7 @@ public class Expression{
     String postfix;
     String exp;
     //Set the expression to semi computer code
-    Expression(){
+    public Expression(){
         st = new Stack<Character>();
         evst = new Stack<BigDecimal>();
         pt = new ptable();
@@ -190,107 +190,32 @@ public class Expression{
         return value;
     }
     String getpostfix(){ return postfix;   }
-    public static void main(String[] args){
+    public static void start() throws Exception{
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter the expression: ");
-        String s = sc.nextLine();
+        int choice =0;
+        do {
+            System.out.println("Enter the expression: ");
+            String s = sc.nextLine();
 
-        System.out.println("Enter the precision if the expression contains division (0 if it doesn't have): ");
-        int precision = sc.nextInt();
-        Expression e = new Expression();
-        e.set(s);
+            System.out.println("Enter the precision if the expression contains division (0 if it doesn't have): ");
+            int precision = sc.nextInt();
+            Expression e = new Expression();
+            e.set(s);
 
-        System.out.println("Expression: "+s);
-        BigDecimal x = e.evaluate(precision);
-        System.out.println("The result of the expression is: " + x);
-    }
-}
-class Financial_calculators {
-    public static void main(String[] args){
-        DecimalFormat df2 = new DecimalFormat("#.##");
-        System.out.print("Enter Type of Calculator: ");
-        Scanner sc = new Scanner(System.in);
-        String want = sc.nextLine();
-        switch (want) {
-            case "Compound Interest": {
-                System.out.print("Enter Principle Amount: ");
-                double p = sc.nextDouble();
-                System.out.print("Enter Annual interest rate: ");
-                double r = sc.nextDouble();
-                r = r / 100;
-                System.out.print("Enter number of years: ");
-                double t = sc.nextDouble();
-                System.out.print("Enter number of times the interest is compounded per year: ");
-                double n = sc.nextDouble();
-                System.out.println(df2.format(p * Math.pow((1 + (r / n)), n * t)));
-                break;
+            System.out.println("Expression: " + s);
+            BigDecimal x = e.evaluate(precision);
+            System.out.println("The result of the expression is: " + x);
+            System.out.println("Want more? : ");
+            System.out.println("1. Yes");
+            System.out.println("2. Back");
+            System.out.println("3. Exit");
+            choice = sc.nextInt();
+            sc.nextLine();  //Clean the buffer
+            if(choice == 3){
+                System.exit(0);
             }
-            case "Post Tax Return": {
-                System.out.print("Interest rate: ");
-                double i = sc.nextDouble();
-                System.out.print("Tax rate: ");
-                double t = sc.nextDouble();
-                System.out.println(i - (i * t / 100));
-                break;
-            }
-            case "Inflation": {
-                System.out.print("Present amount: ");
-                double p = sc.nextDouble();
-                System.out.print("Inflation rate: ");
-                double i = sc.nextDouble();
-                i = i / 100;
-                System.out.print("Number of years: ");
-                double t = sc.nextDouble();
-                System.out.println(df2.format(p * Math.pow(1 + i, t)));
-                break;
-            }
-            case "Purchasing Power": {
-                System.out.print("Present amount: ");
-                double p = sc.nextDouble();
-                System.out.print("Inflation rate: ");
-                double i = sc.nextDouble();
-                i = i / 100;
-                System.out.print("Number of years: ");
-                double t = sc.nextDouble();
-                System.out.println(df2.format(p / Math.pow(1 + i, t)));
-                break;
-            }
-            case "Compounded Annual Growth Rate": {
-                System.out.print("Enter investment's ending/maturity value: ");
-                double FV = sc.nextDouble();
-                System.out.print("Enter investment's beginning/opening value: ");
-                double PV = sc.nextDouble();
-                System.out.print("Number of years: ");
-                double n = sc.nextDouble();
-                System.out.println(df2.format((Math.pow((FV/PV),(1/n)) - 1)*100));
-                break;
-            }
-            case "Loan EMI": {
-                System.out.print("Enter Loan Amount: ");
-                double A = sc.nextDouble();
-                System.out.print("Enter Interest Rate: ");
-                double R = sc.nextDouble();
-                R =R/1200;
-                System.out.print("Number of years: ");
-                double N = sc.nextDouble();
-                N=N*12;
-                double fur = Math.pow(1+R,N);
-                System.out.println(df2.format((A*R)*fur/(fur-1)));
-                break;
-            }
-            case "SIP": {
-                System.out.print("Regular monthly investment: ");
-                double R = sc.nextDouble();
-                System.out.print("Enter Interest Rate: ");
-                double i = sc.nextDouble();
-                i = i/1200;
-                System.out.print("Number of years: ");
-                double n = sc.nextDouble();
-                n = n*12;
-                double fur = Math.pow(i+1,n)-1;
-                System.out.println(df2.format(R*(fur/i)*(1+i)));
-                break;
-            }
+            if(choice < 1 || choice > 3)    System.out.println("Invalid Choice! Please choose between 1-3");
         }
+        while(choice != 2);
     }
 }

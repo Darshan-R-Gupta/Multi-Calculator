@@ -4,17 +4,17 @@ import java.math.*;
 
 public class Trigonometry {
 	private BigDecimal radian, degree;
-	
+
 	private BigDecimal reduceDegree(BigDecimal degree) {
 		this.degree = degree.remainder(new BigDecimal(360));
 		return this.degree;
 	}
-	
+
 	private BigDecimal reduceRadian(BigDecimal radian) {
 		this.radian = radian.remainder(new BigDecimal(2*Math.PI));
 		return this.radian;
 	}
-	
+
 	public void getValuesByRadian(BigDecimal radian) {
 		this.radian = reduceRadian(radian);
 		System.out.println("sin(" + radian + ") : " + new BigDecimal(Math.sin(this.radian.doubleValue())));
@@ -24,7 +24,7 @@ public class Trigonometry {
 		System.out.println("sec(" + radian + ") : " + new BigDecimal(sec(this.radian.doubleValue())));
 		System.out.println("cosec(" + radian + ") : " + new BigDecimal(cosec(this.radian.doubleValue())));
 	}
-	
+
 
 	public void getValuesByDegree(BigDecimal degree) {
 		this.degree = reduceDegree(degree);
@@ -36,7 +36,7 @@ public class Trigonometry {
 		System.out.println("sec(" + degree + ") : " + new BigDecimal(sec(this.radian.doubleValue())));
 		System.out.println("cosec(" + degree + ") : " + new BigDecimal(cosec(this.radian.doubleValue())));
 	}
-	
+
 	private String cosec(double radian) {
 		double sin = Math.sin(radian);
 		if(sin == 0)
@@ -58,7 +58,7 @@ public class Trigonometry {
 			return "infinity";
 		return "" + cos/sin;
 	}
-	
+
 	private String tan(double radian) {
 		double sin = Math.sin(radian);
 		double cos = Math.cos(radian);
@@ -66,7 +66,7 @@ public class Trigonometry {
 			return "infinity";
 		return "" + sin/cos;
 	}
-	
+
 	private BigDecimal toRadian(BigDecimal degree) {
 		this.radian = degree.multiply(new BigDecimal(Math.PI/180));
 		return this.radian;
